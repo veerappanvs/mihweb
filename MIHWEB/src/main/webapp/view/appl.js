@@ -20,7 +20,8 @@ app.controller('ApplicationsCtrl', ['$scope','ApplicationsService', function ($s
 	useExternalPagination: true,
     columnDefs: [
      // { name: 'appId', displayName: 'App ID' },
-      { name: 'uniquePDFAppId', displayName: 'PDF Application ID' },
+      { name: 'uniquePDFAppId', cellTemplate: '<div class="ui-grid-cell-contents">{{ COL_FIELD.uniquePDFAppId }}</div>' },
+      { name: 'uniquePDFAppId', displayName: 'PDF App ID', cellTemplate: 'pdflink.html' },
       { name: 'applicationType', displayName: 'Application Type'},
       { name: 'organization.orgName', displayName: 'HealthBoard name'  },
       { name: 'fileSubmissionDate', displayName: 'Submission Date' },
@@ -33,12 +34,11 @@ app.controller('ApplicationsCtrl', ['$scope','ApplicationsService', function ($s
 																              'APPROVE', 
 																              'REJECT'
 																            ]},*/
-      { name: 'workflowDetails[1].status', displayName: 'APPROVER_1'},
+      { name: 'workflowDetails[0].status', displayName: 'APPROVER_1'},
       { name: 'workflowDetails[1].status', displayName: 'APPROVER_2'},
       { name: 'workflowDetails[2].status', displayName: 'APPROVER_3'},
-      { name: 'workflowDetails[3].status', displayName: 'APPROVER_3'},
-      { name: 'button5', displayName: 'Comments'},
-      { name: 'href', displayName: 'Pdf Form', cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()" ng-click="openTab()"><a href="files/CommunityEMSApp.pdf">link</a></div>' }
+      { name: 'workflowDetails[3].status', displayName: 'APPROVER_4'},
+      { name: 'button5', displayName: 'Comments'}
     ],
     onRegisterApi: function(gridApi) {
         $scope.gridApi = gridApi;
