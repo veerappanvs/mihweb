@@ -22,11 +22,10 @@ app.controller('ApplicationsCtrl', ['$scope','ApplicationsService', function ($s
      // { name: 'appId', displayName: 'App ID' },
       { name: 'uniquePDFAppId', cellTemplate: '<div class="ui-grid-cell-contents">{{ COL_FIELD.uniquePDFAppId }}</div>' },
       { name: 'uniquePDFAppId', displayName: 'PDF App ID', cellTemplate: 'pdflink.html' },
-      { name: 'applicationType', displayName: 'Application Type'},
       { name: 'organization.orgName', displayName: 'HealthBoard name'  },
       { name: 'fileSubmissionDate', displayName: 'Submission Date' },
     /*  { name: 'workflowStartDate', displayName: 'Recieved Date' },*/
-      { name: 'overallWorkflowStatus', displayName: 'Workflow Status'},
+      { name: 'overallWorkflowStatus', displayName: 'Review Status'},
 /*      { name: 'workflowDetails[0].status', displayName: 'APPROVER_1',  editableCellTemplate: 'uiSelect.html',
 																          editDropdownOptionsArray: [
 																              'PENDING',

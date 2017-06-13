@@ -84,7 +84,8 @@ public class Applications {
 	private int appId;
 	private String uniquePDFAppId;
 	private Organization organization;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="MM-dd-yyyy HH:mm a")
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="MM-dd-yyyy HH:mm a")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="MM-dd-yyyy")
 	private Date submissionDate;
 	private Person contactPersonId;
 	private Person primaryMedicalDirectorId;
@@ -98,7 +99,7 @@ public class Applications {
 	private Date createdDate;
 	private Date modifiedDate;
 	private String updatedBy;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="MM-dd-yyyy HH:mm a")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="MM-dd-yyyy")
 	private Date fileSubmissionDate;
 	private String overallWorkflowStatus;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="MM-dd-yyyy HH:mm a")
