@@ -3,8 +3,6 @@ package com.ehs.mihonline.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -97,11 +95,11 @@ public class AppProgramFund{
 	public String getProgramFundName() {
 		return othersDescription;
 	}
-
-	public void setProgramFundName(String othersDescription) {
-		 this.othersDescription = othersDescription;
-	}
 	
+	public void setProgramFundName(String  othersDescription) {
+		this.othersDescription = othersDescription;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */

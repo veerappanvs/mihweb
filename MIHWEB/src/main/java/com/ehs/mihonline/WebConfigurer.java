@@ -10,7 +10,7 @@ class WebConfigurer extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // registry.addResourceHandler("/captcha/**").addResourceLocations("file:///usr/syam/captcha");
     	registry.addResourceHandler("/pdffiles/**").addResourceLocations("file:O:\\MIH\\Process\\");
-    	System.out.println("<><><><>Added resource handler ");
+    	//System.out.println("<><><><>Added resource handler ");
     }
 
 }

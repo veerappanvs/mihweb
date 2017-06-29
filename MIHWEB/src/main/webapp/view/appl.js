@@ -36,8 +36,9 @@ app.controller('ApplicationsCtrl', ['$scope','ApplicationsService', function ($s
       { name: 'workflowDetails[0].status', displayName: 'APPROVER_1'},
       { name: 'workflowDetails[1].status', displayName: 'APPROVER_2'},
       { name: 'workflowDetails[2].status', displayName: 'APPROVER_3'},
-      { name: 'workflowDetails[3].status', displayName: 'APPROVER_4'},
-      { name: 'button5', displayName: 'Comments'}
+      { name: 'workflowDetails[3].status', displayName: 'APPROVER_4'}, 
+      { name: 'previousPDFAppid', displayName: 'Prev App Id'},
+      { name: 'reviewerComments[0].comments', displayName: 'Comments'}
     ],
     onRegisterApi: function(gridApi) {
         $scope.gridApi = gridApi;
