@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+  <head>
+ 	<title>Mih Review Web app</title> 
+    <link data-require="bootstrap@*" data-semver="3.3.2" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <script data-require="jquery@2.1.3" data-semver="2.1.3" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
+    <link data-require="ui-select@0.11.1" data-semver="0.11.1" rel="stylesheet" href="https://cdn.rawgit.com/angular-ui/ui-select/v0.11.2/dist/select.css" />
+    <script data-require="ui-select@0.11.1" data-semver="0.11.1" src="https://cdn.rawgit.com/angular-ui/ui-select/v0.11.2/dist/select.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+    <script src="https://cdn.rawgit.com/angular-ui/ui-grid.info/v3.0.7/release/3.0.7/ui-grid.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/angular-ui/ui-grid.info/v3.0.7/release/3.0.7/ui-grid.min.css" type="text/css" />
+    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+    
+    <link rel="stylesheet" href="static/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/app.css" type="text/css" />
+  </head>
+
+  <body>
+  <table>
+    <td><div> <p><a ><img src="static/images/DPHLogo.jpeg" style="width:30%;height:50px"></a></p> </div></td>
+    <td><div> <p><h2 >EHS-MIH ONLINE APPLICATION REVIEW</h2></p> </div></td>
+  <td></td>
+  </table>
+    <div class="generic-container"  ng-controller="MainCtrl">
+      <div ui-grid="gridOptions" ui-grid-selection ui-grid-exporter ui-grid-resize-columns ui-grid-edit="" class="grid"></div>
+    </div>
+    
+    <script type="text/ng-template" id="uiSelect">
+      <ui-select-wrap>
+        <ui-select ng-model="MODEL_COL_FIELD" theme="selectize" ng-disabled="disabled" append-to-body="true">
+          <ui-select-match placeholder="Choose...">{{ COL_FIELD }}</ui-select-match>
+          <ui-select-choices repeat="item in col.colDef.editDropdownOptionsArray | filter: $select.search">
+            <span>{{ item }}</span>
+          </ui-select-choices>
+        </ui-select>
+      </ui-select-wrap>
+    </script>
+    
+    <script src="view/app.js"></script>
+
+  </body>
+
+</html>

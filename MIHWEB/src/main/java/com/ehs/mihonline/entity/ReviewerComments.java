@@ -22,6 +22,24 @@ import javax.persistence.Table;
 @Table(name="tbl_Reviewer_Comment")
 public class ReviewerComments  {
 
+	/**
+	 * @param id
+	 * @param applicationId
+	 * @param pdfAppId
+	 * @param comments
+	 * @param createdBy
+	 * @param createdTime
+	 */
+	public ReviewerComments(int id, int applicationId, String pdfAppId, String comments, String createdBy,
+			Date createdTime) {
+		super();
+		this.id = id;
+		this.applicationId = applicationId;
+		this.pdfAppId = pdfAppId;
+		this.comments = comments;
+		this.createdBy = createdBy;
+		this.createdTime = createdTime;
+	}
 	public ReviewerComments(){
 	}
 	

@@ -4,6 +4,7 @@
 package com.ehs.mihonline.entity;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -50,10 +51,10 @@ public class Applications {
 	 * @param workflowDetails
 	 */
 	public Applications(String uniquePDFAppId, Organization organization, Date submissionDate, Person contactPersonId,
-			Person primaryMedicalDirectorId, Date proposedprogramStartDate, int noOfEms, int noOfEMT,
+			Person primaryMedicalDirectorId, Date proposedprogramStartDate, String noOfEms, String noOfEMT,
 			String affiliatedHealthCareOrg, String formType, String applicationType, Date createdDate,
 			Date modifiedDate, String updatedBy, Date fileSubmissionDate, String overallWorkflowStatus,
-			Date workflowStartDate, Date workflowCompletedDate, Set<WorkFlowDetails> workflowDetails, String previousPDFAppid, Set<ReviewerComments> reviewerComments) {
+			Date workflowStartDate, Date workflowCompletedDate, Set<WorkFlowDetails> workflowDetails, String previousPDFAppid, Set<ReviewerComments> reviewerComments, String appResubmitted) {
 		super();
 		this.uniquePDFAppId = uniquePDFAppId;
 		this.organization = organization;
@@ -76,6 +77,7 @@ public class Applications {
 		this.workflowDetails = workflowDetails;
 		this.previousPDFAppid = previousPDFAppid;
 		this.reviewerComments = reviewerComments;
+		this.appResubmitted =appResubmitted;
 	}
 
 	public Applications(){
@@ -91,8 +93,8 @@ public class Applications {
 	private Person primaryMedicalDirectorId;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="MM-dd-yyyy")
 	private Date proposedprogramStartDate;
-	private int noOfEms;
-	private int noOfEMT;
+	private String noOfEms;
+	private String noOfEMT;
 	private String affiliatedHealthCareOrg;
 	private String FormType;
 	private String applicationType;
@@ -109,6 +111,7 @@ public class Applications {
 	private Set<WorkFlowDetails>  workflowDetails;
 	private String previousPDFAppid;
 	private Set<ReviewerComments>  reviewerComments;
+	private String appResubmitted;
 	
 	
 	
@@ -155,7 +158,7 @@ public class Applications {
 	/**
 	 * @return the uniquePDFAppId
 	 */
-	@Column(name = "Unique_Id")
+	@Column(name = "Unique_Pdf_App_Id")
 	public String getUniquePDFAppId() {
 		return uniquePDFAppId;
 	}
@@ -275,7 +278,7 @@ public class Applications {
 	 * @return the noOfEms
 	 */
 	@Column(name = "No_of_EMS")
-	public int getNoOfEms() {
+	public String getNoOfEms() {
 		return noOfEms;
 	}
 
@@ -284,7 +287,7 @@ public class Applications {
 	/**
 	 * @param noOfEms the noOfEms to set
 	 */
-	public void setNoOfEms(int noOfEms) {
+	public void setNoOfEms(String noOfEms) {
 		this.noOfEms = noOfEms;
 	}
 
@@ -294,7 +297,7 @@ public class Applications {
 	 * @return the noOfEMT
 	 */
 	@Column(name = "No_of_EMT")
-	public int getNoOfEMT() {
+	public String getNoOfEMT() {
 		return noOfEMT;
 	}
 
@@ -303,7 +306,7 @@ public class Applications {
 	/**
 	 * @param noOfEMT the noOfEMT to set
 	 */
-	public void setNoOfEMT(int noOfEMT) {
+	public void setNoOfEMT(String noOfEMT) {
 		this.noOfEMT = noOfEMT;
 	}
 
@@ -509,7 +512,14 @@ public class Applications {
 	@OneToMany(orphanRemoval=true)
 	@JoinColumn(name="Application_Id")
 	public Set<ReviewerComments> getReviewerComments() {
-		return reviewerComments;
+		//return reviewerComments;
+		//TODO should be removed
+		Set<ReviewerComments> recom =  new HashSet<ReviewerComments>();
+		recom.add(new ReviewerComments(1, this.appId, this.uniquePDFAppId,  "testcomments 111", "alpha ", new Date() ));
+		recom.add(new ReviewerComments(2, this.appId, this.uniquePDFAppId,  "testcomments 222", "beta", new Date() ));
+		recom.add(new ReviewerComments(2, this.appId, this.uniquePDFAppId,  "testcomments 222", "gamma", new Date() ));
+		return recom;
+		
 	}
 
 	/**
@@ -517,6 +527,21 @@ public class Applications {
 	 */
 	public void setReviewerComments(Set<ReviewerComments> reviewerComments) {
 		this.reviewerComments = reviewerComments;
+	}
+
+	/**
+	 * @return the appResubmitted
+	 */
+	@Column(name="App_Resubmitted")
+	public String getAppResubmitted() {
+		return appResubmitted;
+	}
+
+	/**
+	 * @param appResubmitted the appResubmitted to set
+	 */
+	public void setAppResubmitted(String appResubmitted) {
+		this.appResubmitted = appResubmitted;
 	}
 
 	/* (non-Javadoc)
@@ -529,13 +554,14 @@ public class Applications {
 		result = prime * result + ((FormType == null) ? 0 : FormType.hashCode());
 		result = prime * result + ((affiliatedHealthCareOrg == null) ? 0 : affiliatedHealthCareOrg.hashCode());
 		result = prime * result + appId;
+		result = prime * result + ((appResubmitted == null) ? 0 : appResubmitted.hashCode());
 		result = prime * result + ((applicationType == null) ? 0 : applicationType.hashCode());
 		result = prime * result + ((contactPersonId == null) ? 0 : contactPersonId.hashCode());
 		result = prime * result + ((createdDate == null) ? 0 : createdDate.hashCode());
 		result = prime * result + ((fileSubmissionDate == null) ? 0 : fileSubmissionDate.hashCode());
 		result = prime * result + ((modifiedDate == null) ? 0 : modifiedDate.hashCode());
-		result = prime * result + noOfEMT;
-		result = prime * result + noOfEms;
+		result = prime * result + ((noOfEMT == null) ? 0 : noOfEMT.hashCode());
+		result = prime * result + ((noOfEms == null) ? 0 : noOfEms.hashCode());
 		result = prime * result + ((organization == null) ? 0 : organization.hashCode());
 		result = prime * result + ((overallWorkflowStatus == null) ? 0 : overallWorkflowStatus.hashCode());
 		result = prime * result + ((previousPDFAppid == null) ? 0 : previousPDFAppid.hashCode());
@@ -583,6 +609,13 @@ public class Applications {
 		if (appId != other.appId) {
 			return false;
 		}
+		if (appResubmitted == null) {
+			if (other.appResubmitted != null) {
+				return false;
+			}
+		} else if (!appResubmitted.equals(other.appResubmitted)) {
+			return false;
+		}
 		if (applicationType == null) {
 			if (other.applicationType != null) {
 				return false;
@@ -618,10 +651,18 @@ public class Applications {
 		} else if (!modifiedDate.equals(other.modifiedDate)) {
 			return false;
 		}
-		if (noOfEMT != other.noOfEMT) {
+		if (noOfEMT == null) {
+			if (other.noOfEMT != null) {
+				return false;
+			}
+		} else if (!noOfEMT.equals(other.noOfEMT)) {
 			return false;
 		}
-		if (noOfEms != other.noOfEms) {
+		if (noOfEms == null) {
+			if (other.noOfEms != null) {
+				return false;
+			}
+		} else if (!noOfEms.equals(other.noOfEms)) {
 			return false;
 		}
 		if (organization == null) {
@@ -761,8 +802,10 @@ public class Applications {
 		builder.append(previousPDFAppid);
 		builder.append(", reviewerComments=");
 		builder.append(reviewerComments);
+		builder.append(", appResubmitted=");
+		builder.append(appResubmitted);
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 }

@@ -24,7 +24,6 @@ app.controller('ApplicationsCtrl', ['$scope','ApplicationsService', function ($s
       { name: 'uniquePDFAppId', displayName: 'PDF App ID', cellTemplate: 'pdflink.html' },
       { name: 'organization.orgName', displayName: 'HealthBoard name'  },
       { name: 'fileSubmissionDate', displayName: 'Submission Date' },
-    /*  { name: 'workflowStartDate', displayName: 'Recieved Date' },*/
       { name: 'overallWorkflowStatus', displayName: 'Review Status'},
 /*      { name: 'workflowDetails[0].status', displayName: 'APPROVER_1',  editableCellTemplate: 'uiSelect.html',
 																          editDropdownOptionsArray: [
@@ -33,7 +32,7 @@ app.controller('ApplicationsCtrl', ['$scope','ApplicationsService', function ($s
 																              'APPROVE', 
 																              'REJECT'
 																            ]},*/
-      { name: 'workflowDetails[0].status', displayName: 'APPROVER_1'},
+    /*  { name: 'workflowDetails[0].status', displayName: 'APPROVER_1'},*/
       { name: 'workflowDetails[1].status', displayName: 'APPROVER_2'},
       { name: 'workflowDetails[2].status', displayName: 'APPROVER_3'},
       { name: 'workflowDetails[3].status', displayName: 'APPROVER_4'}, 

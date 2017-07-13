@@ -1,6 +1,8 @@
 package com.ehs.mihonline.entity;
 
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +25,7 @@ public class Ambulance{
     private String serviceName;
     private String contactPerson;
     private String personTitle;
-    private long contactNumber;
+    private String contactNumber;
     private String emailID;
 
 
@@ -39,7 +41,7 @@ public class Ambulance{
 	 * @param emailID
 	 */
 	public Ambulance(int ambulanceId, String localJusrisdication, String licenseNumber, String serviceName,
-			String contactPerson, String personTitle, long contactNumber, String emailID) {
+			String contactPerson, String personTitle, String contactNumber, String emailID) {
 		super();
 		this.ambulanceId = ambulanceId;
 		this.serviceName = serviceName;
@@ -56,7 +58,7 @@ public class Ambulance{
     }
 
  	public Ambulance(String serviceName,  String localJusrisdication, String licenseNumber, 
- 			String contactPerson, long contactNumber, String emailID) {
+ 			String contactPerson, String contactNumber, String emailID) {
  		super();
  		this.serviceName = serviceName;
  		this.LocalJusrisdication = localJusrisdication;
@@ -163,14 +165,14 @@ public class Ambulance{
 	 * @return the contactNumber
 	 */
 	@Column(name="Ambulance_Contact_Number")
-	public long getContactNumber() {
+	public String getContactNumber() {
 		return contactNumber;
 	}
 
 	/**
 	 * @param contactNumber the contactNumber to set
 	 */
-	public void setContactNumber(long contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 
@@ -191,6 +193,9 @@ public class Ambulance{
 	}
 
 
+
+	
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -201,7 +206,7 @@ public class Ambulance{
 		result = prime * result + ((LicenseNumber == null) ? 0 : LicenseNumber.hashCode());
 		result = prime * result + ((LocalJusrisdication == null) ? 0 : LocalJusrisdication.hashCode());
 		result = prime * result + ambulanceId;
-		result = prime * result + (int) (contactNumber ^ (contactNumber >>> 32));
+		result = prime * result + ((contactNumber == null) ? 0 : contactNumber.hashCode());
 		result = prime * result + ((contactPerson == null) ? 0 : contactPerson.hashCode());
 		result = prime * result + ((emailID == null) ? 0 : emailID.hashCode());
 		result = prime * result + ((personTitle == null) ? 0 : personTitle.hashCode());
@@ -241,7 +246,11 @@ public class Ambulance{
 		if (ambulanceId != other.ambulanceId) {
 			return false;
 		}
-		if (contactNumber != other.contactNumber) {
+		if (contactNumber == null) {
+			if (other.contactNumber != null) {
+				return false;
+			}
+		} else if (!contactNumber.equals(other.contactNumber)) {
 			return false;
 		}
 		if (contactPerson == null) {
