@@ -54,8 +54,8 @@ function MainCtrl($scope, $http) {
         { name: 'workflowDetails[1].status',  width: '7%', displayName: 'REVIEWER_2' ,   editableCellTemplate: 'uiSelect', editDropdownOptionsArray: ['PENDING','ONHOLD','APPROVED','REJECTED'] , cellEditableCondition: cellEditable_2},  
         { name: 'workflowDetails[2].status',  width: '7%', displayName: 'REVIEWER_3',    editableCellTemplate: 'uiSelect', editDropdownOptionsArray: ['PENDING','ONHOLD','APPROVED','REJECTED'] , cellEditableCondition: cellEditable_3}, 
         { name: 'workflowDetails[3].status',  width: '7%', displayName: 'REVIEWER_4',    editableCellTemplate: 'uiSelect', editDropdownOptionsArray: ['PENDING','ONHOLD','APPROVED','REJECTED'] , cellEditableCondition: cellEditable_4 },
-
-        { name: 'reviewerComments[0].id', enableCellEdit: false, displayName: 'Comments', cellTemplate: 'comments.html?id=1' }
+        { name: 'reviewerComments[0].comments', enableCellEdit: false, cellTemplate: '<div class="ui-grid-cell-contents">comments</div>' },
+        { name: 'reviewerComments[0].comments', enableCellEdit: false, displayName: 'Comments', cellTemplate: 'comments.html' , cellTemplate: '<button id="showButton"  class="btn-small" ng-click="showModal()">VIEW</button> <button id="editBtn" type="button" class="btn-small" >ADD</button>'}
 	], 
 	rowHeight: 38,
 	enableColumnResize: true,
